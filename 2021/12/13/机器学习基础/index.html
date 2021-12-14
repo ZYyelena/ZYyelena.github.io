@@ -4,11 +4,12 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="深度学习2, Hexo">
-    <meta name="description" content="逻辑回归
-假设函数线性回归：$y=w^TX+b$, 预估值的范围为（负无穷，正无穷）。对于逻辑回归来讲，预估值范围应该在0——1之间。故需要将线性回归的预估值做映射，选用
-
-神经网路一个输入层、一个输出层、多个隐藏层组成。隐藏层分为三个步骤">
+    <meta name="keywords" content="机器学习基础, Hexo">
+    <meta name="description" content="机器学习分类机器学习是寻找合适的映射函数。
+1. 按目标分类：回归：预估值为连续值分类：预估值为离散值。分为二分类和多分类。structure learning: 预估值为图像、语音等。
+机器学习训练步骤
+获取/构造训练数据集
+根据业务场景">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -20,7 +21,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>深度学习2 | Hexo</title>
+    <title>机器学习基础 | Hexo</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
@@ -312,12 +313,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/19.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/14.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">深度学习2</h1>
+                    <h1 class="description center-align post-title">机器学习基础</h1>
                 </div>
             </div>
         </div>
@@ -431,13 +432,9 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                    <div class="article-tag">
-                        
-                            <a href="/tags/deep-learning/">
-                                <span class="chip bg-color">deep-learning</span>
-                            </a>
-                        
-                    </div>
+                          <div class="article-tag">
+                            <span class="chip bg-color">No tag</span>
+                          </div>
                     
                 </div>
                 <div class="col s5 right-align">
@@ -449,7 +446,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
-                    2021-11-08
+                    2021-12-13
                 </div>
                 
 
@@ -470,20 +467,18 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="逻辑回归"><a href="#逻辑回归" class="headerlink" title="逻辑回归"></a>逻辑回归</h2><ul>
-<li>假设函数<br>线性回归：$y=w^TX+b$, 预估值的范围为（负无穷，正无穷）。<br>对于逻辑回归来讲，预估值范围应该在0——1之间。故需要将线性回归的预估值做映射，选用</li>
-</ul>
-<h2 id="神经网路"><a href="#神经网路" class="headerlink" title="神经网路"></a>神经网路</h2><p>一个输入层、一个输出层、多个隐藏层组成。<br>隐藏层分为三个步骤：映射函数、激活函数</p>
-<h3 id="激活函数"><a href="#激活函数" class="headerlink" title="激活函数"></a>激活函数</h3><p>不同的神经网络层中，激活函数可以不同。  </p>
-<ol>
-<li><strong>sigmoid激活函数</strong>: 使用很少。在二分类的问题中，对于输出层，因为的值是0或1，所以想让的数值介于0和1之间，而不是在-1和+1之间。所以需要使用sigmoid激活函数.   </li>
-<li><strong>tanh激活函数</strong>: tanh函数是sigmoid的向下平移和伸缩后的结果。在训练一个算法模型时，如果使用tanh函数代替sigmoid函数中心化数据，使得数据的平均值更接近0而不是0.5.这会使下一层学习简单一点。所以除了二分类场景，其他场合tanh函数在所有场合都优于sigmoid函数。  </li>
-<li><strong>ReLu激活函数</strong>: 修正线性单元的函数. 只要z是正值的情况下，导数恒等于1，当z是负值的时候，导数恒等于0。z是等于0的时候，假设一个导数是1或者0效果都可以.<br> 在的区间变动很大的情况下，激活函数的导数或者激活函数的斜率都会远大于0，在程序实现就是一个if-else语句，而sigmoid函数需要进行浮点四则运算，在实践中，使用ReLu激活函数神经网络通常会比使用sigmoid或者tanh激活函数学习的更快。<br> sigmoid和tanh函数的导数在正负饱和区的梯度都会接近于0，这会造成梯度弥散，而Relu和Leaky ReLu函数大于0部分都为常数，不会产生梯度弥散现象。   </li>
-<li><strong>Leaky ReLu</strong>: 当z是负值时，这个函数的值不是等于0，而是轻微的倾斜。这个函数通常比Relu激活函数效果要好，尽管在实际中Leaky ReLu使用的并不多。  </li>
+                <h1 id="机器学习分类"><a href="#机器学习分类" class="headerlink" title="机器学习分类"></a>机器学习分类</h1><p>机器学习是寻找合适的映射函数。</p>
+<h2 id="1-按目标分类："><a href="#1-按目标分类：" class="headerlink" title="1. 按目标分类："></a>1. 按目标分类：</h2><p>回归：预估值为连续值<br>分类：预估值为离散值。分为二分类和多分类。<br>structure learning: 预估值为图像、语音等。</p>
+<h1 id="机器学习训练步骤"><a href="#机器学习训练步骤" class="headerlink" title="机器学习训练步骤"></a>机器学习训练步骤</h1><ol start="0">
+<li>获取/构造训练数据集</li>
+<li>根据业务场景，定义模型(domain knowledge)</li>
+<li>定义损失函数<br>损失函数分为：MAE(绝对误差)、MSE(平方误差)、交叉熵损失函数</li>
+<li>找最优解（优化器）<br>常用方法有：梯度下降法(SGD)、<br>停止条件：到达最高迭代次数或者梯度为0<br>问题：找到局部最优解而非全局最优解怎么办？（梯度下降才有这个问题）<br>ans: 随机初始点；调大步长</li>
 </ol>
-<ul>
-<li><strong>这有一些选择激活函数的经验法则</strong>：<br>  sigmoid激活函数：除了输出层是一个二分类问题基本不会用它。<br>  tanh激活函数：tanh是非常优秀的，几乎适合所有场合。<br>  ReLu激活函数：最常用的默认函数，，如果不确定用哪个激活函数，就使用ReLu或者Leaky ReLu.    <h3 id="为什么需要非线性激活函数？？"><a href="#为什么需要非线性激活函数？？" class="headerlink" title="为什么需要非线性激活函数？？"></a>为什么需要非线性激活函数？？</h3>  如果你是用线性激活函数或者叫恒等激励函数，那么神经网络只是把输入线性组合再输出。<br>  事实证明，如果你使用线性激活函数或者没有使用一个激活函数，那么无论你的神经网络有多少层一直在做的只是计算线性函数，所以不如直接去掉全部隐藏层。在我们的简明案例中，事实证明如果你在隐藏层用线性激活函数，在输出层用sigmoid函数，那么这个模型的复杂度和没有任何隐藏层的标准Logistic回归是一样的。<br>总而言之，不能在隐藏层用线性激活函数，可以用ReLU或者tanh或者leaky ReLU或者其他的非线性激活函数，唯一可以用线性激活函数的通常就是输出层；除了这种情况，会在隐层用线性函数的，除了一些特殊情况，比如与压缩有关的，那方面在这里将不深入讨论。   </li>
-</ul>
+<h1 id="交叉熵损失函数"><a href="#交叉熵损失函数" class="headerlink" title="交叉熵损失函数"></a>交叉熵损失函数</h1><p>交叉熵由信息熵推导而来，为信息熵与相对熵之差。因为相对熵可以描述预估值与真实值的差别，但其中的信息熵是恒定的，故交叉熵可以表示预估值与真实值的差别。    </p>
+<h2 id="定义："><a href="#定义：" class="headerlink" title="定义："></a>定义：</h2><p>L=-1/N(sum_i(sum_c(y_ic * log(p_ic))))<br>其中，c表示多个类别，i表示样本数目. y_ic表示第i个样本在第c类的真实值；p_ic表示第i个样本分为c类的概率。</p>
+<h2 id="导数：eL-ew-delta-s-i-y-i-x-i"><a href="#导数：eL-ew-delta-s-i-y-i-x-i" class="headerlink" title="导数：eL/ew = [delta(s_i)-y_i] * x_i"></a>导数：eL/ew = [delta(s_i)-y_i] * x_i</h2><h2 id="适用场景：分类（二分类或多分类）"><a href="#适用场景：分类（二分类或多分类）" class="headerlink" title="适用场景：分类（二分类或多分类）"></a>适用场景：分类（二分类或多分类）</h2><p>不实用MSE损失函数的原因：MSE能够判断出来模型2优于模型1，那为什么不采样这种损失函数呢？主要原因是在分类问题中，使用sigmoid/softmx得到概率，配合MSE损失函数时，采用梯度下降法进行学习时，会出现模型一开始训练时，学习速率非常慢的情况（MSE损失函数）.<br>交叉熵损失函数经常用于分类问题中，特别是在神经网络做分类问题时，也经常使用交叉熵作为损失函数，此外，由于交叉熵涉及到计算每个类别的概率，所以交叉熵几乎每次都和sigmoid(或softmax)函数一起出现。</p>
+<p>优点：1.使用交叉熵损失函数，不仅可以很好的衡量模型的效果，又可以很容易的的进行求导计算。2.在模型效果差的时候学习速度比较快，在模型效果好的时候学习速度变慢<br>缺点：1、随着分类数目的增大，分类层的线性变化矩阵参数也随着增大；2、对于封闭集分类问题，学习到的特征是可分离的，但对于开放集人脸识别问题，所学特征却没有足够的区分性。<br>另外，sigmoid(softmax)+cross-entropy loss 擅长于学习类间的信息，因为它采用了类间竞争机制，它只关心对于正确标签预测概率的准确性，忽略了其他非正确标签的差异，导致学习到的特征比较散。基于这个问题的优化有很多，比如对softmax进行改进，如L-Softmax、SM-Softmax、AM-Softmax等。</p>
 
                 
             </div>
@@ -500,7 +495,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="/about" rel="external nofollow noreferrer">yelena</a>
+                    <a href="/about" rel="external nofollow noreferrer">John Doe</a>
                 </span>
             </div>
             <div class="reprint__type">
@@ -510,7 +505,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://example.com/2021/11/08/second-page-md/">http://example.com/2021/11/08/second-page-md/</a>
+                    <a href="http://example.com/2021/12/13/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%9F%BA%E7%A1%80/">http://example.com/2021/12/13/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%9F%BA%E7%A1%80/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -523,7 +518,7 @@
                     All articles in this blog are used except for special statements
                     <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
                     reprint policy. If reproduced, please indicate source
-                    <a href="/about" target="_blank">yelena</a>
+                    <a href="/about" target="_blank">John Doe</a>
                     !
                 </span>
             </div>
@@ -547,11 +542,7 @@
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            
-                                <a href="/tags/deep-learning/">
-                                    <span class="chip bg-color">deep-learning</span>
-                                </a>
-                            
+                            <span class="chip bg-color">No tag</span>
                         </div>
                     
                 </div>
@@ -721,9 +712,48 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
+                <i class="far fa-dot-circle"></i>&nbsp;Current
+            </div>
+            <div class="card">
+                <a href="/2021/12/13/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%9F%BA%E7%A1%80/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="机器学习基础">
+                        
+                        <span class="card-title">机器学习基础</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-12-13
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            John Doe
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                Next&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
             <div class="card">
                 <a href="/2021/12/08/svm%E7%9B%B8%E5%85%B3/">
                     <div class="card-image">
@@ -741,9 +771,9 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-12-08
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-12-08
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-user fa-fw"></i>
@@ -751,51 +781,6 @@
                             
                         </span>
                     </div>
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                Next&nbsp;<i class="fas fa-chevron-right"></i>
-            </div>
-            <div class="card">
-                <a href="/2021/11/08/firstPage-md/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="深度学习1">
-                        
-                        <span class="card-title">深度学习1</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            
-                        
-                    </div>
-                    <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-11-08
-                            </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-user fa-fw"></i>
-                            yelena
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/deep-learning/">
-                        <span class="chip bg-color">deep-learning</span>
-                    </a>
-                    
                 </div>
                 
             </div>
