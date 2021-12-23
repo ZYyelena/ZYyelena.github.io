@@ -4,12 +4,8 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="机器学习基础, Hexo">
-    <meta name="description" content="机器学习分类机器学习是寻找合适的映射函数。
-1. 按目标分类：回归：预估值为连续值分类：预估值为离散值。分为二分类和多分类。structure learning: 预估值为图像、语音等。
-机器学习训练步骤
-获取/构造训练数据集
-根据业务场景">
+    <meta name="keywords" content="深度学习基础, Hexo">
+    <meta name="description" content="通用方法在training上loss大，在testing上loss大   1）model bias：模型不够好      solution:可以改模型结构（深度学习，加层）或优化特征（增加特征数目、特征优化）   2) optimizati">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -21,7 +17,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>机器学习基础 | Hexo</title>
+    <title>深度学习基础 | Hexo</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
@@ -313,12 +309,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/14.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/3.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">机器学习基础</h1>
+                    <h1 class="description center-align post-title">深度学习基础</h1>
                 </div>
             </div>
         </div>
@@ -446,7 +442,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
-                    2021-12-13
+                    2021-12-16
                 </div>
                 
 
@@ -467,23 +463,15 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="机器学习分类"><a href="#机器学习分类" class="headerlink" title="机器学习分类"></a>机器学习分类</h1><p>机器学习是寻找合适的映射函数。</p>
-<h2 id="1-按目标分类："><a href="#1-按目标分类：" class="headerlink" title="1. 按目标分类："></a>1. 按目标分类：</h2><p>回归：预估值为连续值<br>分类：预估值为离散值。分为二分类和多分类。<br>structure learning: 预估值为图像、语音等。</p>
-<h1 id="机器学习训练步骤"><a href="#机器学习训练步骤" class="headerlink" title="机器学习训练步骤"></a>机器学习训练步骤</h1><ol start="0">
-<li>获取/构造训练数据集</li>
-<li>根据业务场景，定义模型(domain knowledge)</li>
-<li>定义损失函数<br>损失函数分为：MAE(绝对误差)、MSE(平方误差)、交叉熵损失函数</li>
-<li>找最优解（优化器）<br>常用方法有：梯度下降法(SGD)、<br>停止条件：到达最高迭代次数或者梯度为0<br>问题：找到局部最优解而非全局最优解怎么办？（梯度下降才有这个问题）<br>ans: 随机初始点；调大步长</li>
-</ol>
-<h1 id="交叉熵损失函数"><a href="#交叉熵损失函数" class="headerlink" title="交叉熵损失函数"></a>交叉熵损失函数</h1><p>交叉熵由信息熵推导而来，为信息熵与相对熵之差。因为相对熵可以描述预估值与真实值的差别，但其中的信息熵是恒定的，故交叉熵可以表示预估值与真实值的差别。    </p>
-<h2 id="定义："><a href="#定义：" class="headerlink" title="定义："></a>定义：</h2><p>L=-1/N(sum_i(sum_c(y_ic * log(p_ic))))<br>其中，c表示多个类别，i表示样本数目. y_ic表示第i个样本在第c类的真实值；p_ic表示第i个样本分为c类的概率。</p>
-<h2 id="导数：eL-ew-delta-s-i-y-i-x-i"><a href="#导数：eL-ew-delta-s-i-y-i-x-i" class="headerlink" title="导数：eL/ew = [delta(s_i)-y_i] * x_i"></a>导数：eL/ew = [delta(s_i)-y_i] * x_i</h2><h2 id="适用场景：分类（二分类或多分类）"><a href="#适用场景：分类（二分类或多分类）" class="headerlink" title="适用场景：分类（二分类或多分类）"></a>适用场景：分类（二分类或多分类）</h2><p>不实用MSE损失函数的原因：MSE能够判断出来模型2优于模型1，那为什么不采样这种损失函数呢？主要原因是在分类问题中，使用sigmoid/softmx得到概率，配合MSE损失函数时，采用梯度下降法进行学习时，会出现模型一开始训练时，学习速率非常慢的情况（MSE损失函数）.<br>交叉熵损失函数经常用于分类问题中，特别是在神经网络做分类问题时，也经常使用交叉熵作为损失函数，此外，由于交叉熵涉及到计算每个类别的概率，所以交叉熵几乎每次都和sigmoid(或softmax)函数一起出现。</p>
-<p>优点：1.使用交叉熵损失函数，不仅可以很好的衡量模型的效果，又可以很容易的的进行求导计算。2.在模型效果差的时候学习速度比较快，在模型效果好的时候学习速度变慢<br>缺点：1、随着分类数目的增大，分类层的线性变化矩阵参数也随着增大；2、对于封闭集分类问题，学习到的特征是可分离的，但对于开放集人脸识别问题，所学特征却没有足够的区分性。<br>另外，sigmoid(softmax)+cross-entropy loss 擅长于学习类间的信息，因为它采用了类间竞争机制，它只关心对于正确标签预测概率的准确性，忽略了其他非正确标签的差异，导致学习到的特征比较散。基于这个问题的优化有很多，比如对softmax进行改进，如L-Softmax、SM-Softmax、AM-Softmax等。</p>
-<h1 id="model-bias"><a href="#model-bias" class="headerlink" title="model bias"></a>model bias</h1><p>model无法近似模拟实际情况</p>
-<h1 id="sigmoid"><a href="#sigmoid" class="headerlink" title="sigmoid"></a>sigmoid</h1><h2 id="sigmoid-function"><a href="#sigmoid-function" class="headerlink" title="sigmoid function"></a>sigmoid function</h2><p>y=c*sigmoid(b+wX) = c * (1/(1+e(-wx+b)))<br>任一函数/曲线都可以用若干个sigmoid函数相加来近似表示</p>
-<h2 id="hard-sigmoid"><a href="#hard-sigmoid" class="headerlink" title="hard sigmoid"></a>hard sigmoid</h2><h1 id=""><a href="#" class="headerlink" title=""></a></h1><p>batch:每个batch求梯度，按梯度更新所有参数<br>epoch:一个epoch包含 N/batch 次batch,所有的batch都跑过一次，成为一个epoch</p>
-<h1 id="ReLU"><a href="#ReLU" class="headerlink" title="ReLU"></a>ReLU</h1><p>定义：2个ReLU可以替代一个sigmoid函数<br>=max(0, wx+b)</p>
-<p>sigmoid和ReLU在深度学习中叫做激励函数（activate function）</p>
+                <h1 id="通用方法"><a href="#通用方法" class="headerlink" title="通用方法"></a>通用方法</h1><h2 id="在training上loss大，在testing上loss大"><a href="#在training上loss大，在testing上loss大" class="headerlink" title="在training上loss大，在testing上loss大"></a>在training上loss大，在testing上loss大</h2><p>   1）model bias：模型不够好<br>      solution:可以改模型结构（深度学习，加层）或优化特征（增加特征数目、特征优化）<br>   2) optimization:优化算法没做好，陷入局部最优解<br>      solution: 深层网络达不到浅层网络（或传统svm/gbdt等）的效果，则为优化没做好</p>
+<h2 id="在training上loss小，在testing上loss大"><a href="#在training上loss小，在testing上loss大" class="headerlink" title="在training上loss小，在testing上loss大"></a>在training上loss小，在testing上loss大</h2><p>   1.overfitting<br>   solution:<br>      1）增加训练集：data argumentation<br>      2) 给模型增加限制：更少的参数、参数共享、正则化、更少的特征、drop out、early stopping<br>   2.mismatch<br>     训练集和测试集分布不一致，增加训练集无法有助于问题的解决</p>
+<h2 id="在training上loss小，在testing上loss小"><a href="#在training上loss小，在testing上loss小" class="headerlink" title="在training上loss小，在testing上loss小"></a>在training上loss小，在testing上loss小</h2><p>   理想的结果</p>
+<h1 id="training-set-amp-public-testing-set-amp-public-testing-set"><a href="#training-set-amp-public-testing-set-amp-public-testing-set" class="headerlink" title="training set &amp; public testing set &amp; public testing set"></a>training set &amp; public testing set &amp; public testing set</h1><p>public testing set：可以知道标签及结果的测试集<br>private testing set：真实情况的测试集<br>不应该通过public testing set调整模型的参数，因为即使public testing set效果很好但可能实际在private testing set上效果会不好。<br>应该将training set分出一部分（10%或1/n等）作为校验集，通过校验集调整模型参数。常用n-fold法来使用不同的训练集和校验集进行训练，然后n个模型中选择效果最好的那个模型的参数。</p>
+<h1 id="optimization"><a href="#optimization" class="headerlink" title="optimization"></a>optimization</h1><p>如果训练过程中，loss不够低但改变很小，或者一开始就训不动。就是gradient接近于0导致的。<br>当gradient接近于0时，可能是local minima/local maxma/saddle point(鞍点)，这些导致gradient为0的点，统称为critical point.</p>
+<h2 id="区分local-minima和saddle-point"><a href="#区分local-minima和saddle-point" class="headerlink" title="区分local minima和saddle point"></a>区分local minima和saddle point</h2><p>在当前point,已知当前所有参数, 根据当前参数O’，可以写出附近的loss的function,即L(O)=L(O’)+(O-O’)^T * g +(O-O’)^T * H *(O-O’). 因为g为0，故L(O)=L(O’)+(O-O’)H(O-O’)。则若任给一个O，都有(O-O’)H(O-O’)&gt;0,则为local minima;都小于0，则为local maxma;有的大于0，有的小于0，则为saddle point.<br>实际不需要计算(O-O’)H(O-O’)的值，只需要看H矩阵的engine values,都大于0则local minima,其他同上。<br>H怎么计算：为参数的二阶导数组成的矩阵，然后求该矩阵的engine values。<br>实际中，大部分都是saddle point，很少是local minima</p>
+<h2 id="saddle-point"><a href="#saddle-point" class="headerlink" title="saddle point"></a>saddle point</h2><p>   H表示了可以继续优化的方向。可以根据H中负值的engine value构建engine vector, 然后根据engine vector继续优化参数。</p>
+<h2 id="local-minima"><a href="#local-minima" class="headerlink" title="local minima"></a>local minima</h2><p>   调大步长；增加随机，随机起始点；</p>
+<p>batch size大，梯度更新快，因为gpu的并行计算能力, optimization较差，泛化能力较差（overfitting）；batch size小，计算慢，但是optimization效果更好，泛化能力更强，在testing set上效果更好。<br>momentum：参数更新，不只考虑当前梯度，还需要考虑之前所有梯度<br>小batch size和momentum可以有助于逃离saddle point和local minima</p>
 
                 
             </div>
@@ -500,7 +488,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="/about" rel="external nofollow noreferrer">John Doe</a>
+                    <a href="/about" rel="external nofollow noreferrer">yelena</a>
                 </span>
             </div>
             <div class="reprint__type">
@@ -510,7 +498,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://example.com/2021/12/13/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%9F%BA%E7%A1%80/">http://example.com/2021/12/13/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%9F%BA%E7%A1%80/</a>
+                    <a href="http://example.com/2021/12/16/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%9F%BA%E7%A1%80/">http://example.com/2021/12/16/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%9F%BA%E7%A1%80/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -523,7 +511,7 @@
                     All articles in this blog are used except for special statements
                     <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
                     reprint policy. If reproduced, please indicate source
-                    <a href="/about" target="_blank">John Doe</a>
+                    <a href="/about" target="_blank">yelena</a>
                     !
                 </span>
             </div>
@@ -717,9 +705,48 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
+                <i class="far fa-dot-circle"></i>&nbsp;Current
+            </div>
+            <div class="card">
+                <a href="/2021/12/16/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%9F%BA%E7%A1%80/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/3.jpg" class="responsive-img" alt="深度学习基础">
+                        
+                        <span class="card-title">深度学习基础</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-12-16
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            yelena
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                Next&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
             <div class="card">
                 <a href="/2021/12/14/GBDT/">
                     <div class="card-image">
@@ -737,45 +764,8 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-12-14
-                        </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-user fa-fw"></i>
-                            John Doe
-                            
-                        </span>
-                    </div>
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                Next&nbsp;<i class="fas fa-chevron-right"></i>
-            </div>
-            <div class="card">
-                <a href="/2021/12/08/svm%E7%9B%B8%E5%85%B3/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="svm相关">
-                        
-                        <span class="card-title">svm相关</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            
-                        
-                    </div>
-                    <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-12-08
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-12-14
                             </span>
                         <span class="publish-author">
                             
