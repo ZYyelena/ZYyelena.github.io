@@ -471,7 +471,13 @@
 <h2 id="区分local-minima和saddle-point"><a href="#区分local-minima和saddle-point" class="headerlink" title="区分local minima和saddle point"></a>区分local minima和saddle point</h2><p>在当前point,已知当前所有参数, 根据当前参数O’，可以写出附近的loss的function,即L(O)=L(O’)+(O-O’)^T * g +(O-O’)^T * H *(O-O’). 因为g为0，故L(O)=L(O’)+(O-O’)H(O-O’)。则若任给一个O，都有(O-O’)H(O-O’)&gt;0,则为local minima;都小于0，则为local maxma;有的大于0，有的小于0，则为saddle point.<br>实际不需要计算(O-O’)H(O-O’)的值，只需要看H矩阵的engine values,都大于0则local minima,其他同上。<br>H怎么计算：为参数的二阶导数组成的矩阵，然后求该矩阵的engine values。<br>实际中，大部分都是saddle point，很少是local minima</p>
 <h2 id="saddle-point"><a href="#saddle-point" class="headerlink" title="saddle point"></a>saddle point</h2><p>   H表示了可以继续优化的方向。可以根据H中负值的engine value构建engine vector, 然后根据engine vector继续优化参数。</p>
 <h2 id="local-minima"><a href="#local-minima" class="headerlink" title="local minima"></a>local minima</h2><p>   调大步长；增加随机，随机起始点；</p>
-<p>batch size大，梯度更新快，因为gpu的并行计算能力, optimization较差，泛化能力较差（overfitting）；batch size小，计算慢，但是optimization效果更好，泛化能力更强，在testing set上效果更好。<br>momentum：参数更新，不只考虑当前梯度，还需要考虑之前所有梯度<br>小batch size和momentum可以有助于逃离saddle point和local minima</p>
+<h3 id="bactch-size和momentum对optimization的影响"><a href="#bactch-size和momentum对optimization的影响" class="headerlink" title="bactch size和momentum对optimization的影响"></a>bactch size和momentum对optimization的影响</h3><p>batch size大，梯度更新快，因为gpu的并行计算能力, optimization较差，泛化能力较差（overfitting）；batch size小，计算慢，但是optimization效果更好，泛化能力更强，在testing set上效果更好。<br>momentum：参数更新，不只考虑当前梯度，还需要考虑之前所有梯度<br>小batch size和momentum可以有助于逃离saddle point和local minima</p>
+<h2 id="梯度不为0，但loss变，导致训练停止"><a href="#梯度不为0，但loss变，导致训练停止" class="headerlink" title="梯度不为0，但loss变，导致训练停止"></a>梯度不为0，但loss变，导致训练停止</h2><p>   这种现象比local minima和saddle point更常见的多，主要是因为在低谷两侧来回震动导致。<br>   可以使用自适应optimization解决，常见有Ada- 、Adam-、    </p>
+<h3 id="Ada"><a href="#Ada" class="headerlink" title="Ada"></a>Ada</h3><pre><code>除了当前梯度，使用yita/sigma(square(sum(old_grad_i)))来调节每次更新的步长，即除了学习率、之前的梯度值也会影响每次更新的步长
+</code></pre>
+<h3 id="Adam"><a href="#Adam" class="headerlink" title="Adam"></a>Adam</h3><pre><code>在Ada基础之上，增加了动量来调节每次更新的步长。     
+</code></pre>
+<p>Ada和Adam某种程度上也可以解决local minima和saddle point的问题</p>
 
                 
             </div>
